@@ -1,0 +1,25 @@
+spec_version: "0.1.0"
+name: agent-redteam
+version: 1.0.0
+description: >
+  Agentic LLM Red Team Harness — a CLI security tool that uses Claude as an
+  adversarial engine to systematically probe AI agent system prompts for
+  identity abuse, credential exfiltration, privilege escalation, and safety
+  boundary vulnerabilities. Maps findings to MITRE ATT&CK and produces
+  Markdown incident reports and machine-readable JSON for SIEM/CI integration.
+license: MIT
+model:
+  preferred: anthropic:claude-sonnet-4-20250514
+runtime:
+  max_turns: 50
+skills:
+  - id: probe-generation
+    description: Generates tailored adversarial probes across 8 MITRE-mapped attack categories for a given target system prompt
+  - id: vulnerability-analysis
+    description: Evaluates whether a system prompt contains exploitable weaknesses (instruction override, trust propagation, context drift, scope ambiguity, helpfulness override)
+  - id: incident-reporting
+    description: Produces terminal summaries, Markdown incident reports, and structured JSON findings suitable for SIEM or CI pipelines
+compliance:
+  risk_tier: standard
+  supervision:
+    human_in_the_loop: none
