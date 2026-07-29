@@ -1,0 +1,32 @@
+spec_version: "0.1.0"
+name: agent-redteam
+version: 1.0.0
+description: >
+  An agentic LLM red-team harness that uses Claude to systematically probe AI
+  agent system prompts for security vulnerabilities — identity abuse, credential
+  exfiltration, privilege escalation, goal hijacking, and safety-boundary bypass.
+  Generates adversarial probes across 8 MITRE-mapped attack categories, evaluates
+  findings, and produces machine-readable JSON reports and human-readable Markdown
+  incident summaries. Designed for CI pipeline integration with exit-code semantics.
+license: MIT
+model:
+  preferred: anthropic:claude-sonnet-4-20250514
+skills:
+  - name: probe-generation
+    description: >
+      Generates realistic, target-tailored adversarial probes for a given attack
+      category using Claude as the red-team analyst.
+  - name: vulnerability-analysis
+    description: >
+      Evaluates whether a target agent system prompt is susceptible to each
+      generated probe; scores findings with CVSS-like severity ratings.
+  - name: incident-reporting
+    description: >
+      Produces structured JSON findings files and Markdown incident reports
+      summarising all vulnerabilities found in a red-team run.
+runtime:
+  max_turns: 5
+compliance:
+  risk_tier: standard
+  supervision:
+    human_in_the_loop: none
